@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ColorBoard Game</title>
+</head>
+<body>
+
+<div>
+    <div>
+        <h1>ColorBoard Game</h1>
+        {% if result %}
+            <h3>{{ result }}</h3>
+        {% endif %}
+
+        <form action="" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <div style="margin: 1%"><div>{{ form.players.label }}:</div> <div>{{ form.players }}</div></div>
+            <div style="margin: 1%"><div>{{ form.squares.label }}:</div> <div>{{ form.squares }}</div></div>
+            <div style="margin: 1%"><div>{{ form.deck_size.label }}:</div> <div>{{ form.deck_size }}</div></div>
+            <div style="margin: 1%"><div>{{ form.sequence.label }}:</div> <div>{{ form.sequence }}</div></div>
+            <div style="margin: 1%"><div>{{ form.deck_list.label }}:</div> <div>{{ form.deck_list }}</div></div>
+            <input type="submit" value="Submit" class="btn btn-primary" style="margin:1%">
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

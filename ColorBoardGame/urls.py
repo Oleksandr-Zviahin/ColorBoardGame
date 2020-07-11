@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from colorboard import views
+from colorboard.views import ColorBoardView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', ColorBoardView.as_view()),
 ]
