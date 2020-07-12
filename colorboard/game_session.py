@@ -7,7 +7,7 @@ class GameSession:
         self.squares = settings['squares']
         self.deck_size = settings['deck_size']
         self.sequence = settings['sequence'].upper()
-        self.deck_list = settings['deck_list'].upper().split(',')
+        self.deck_list = settings['deck_list'].upper().replace(' ', '').split(',')
         self.result = f'No player won after {self.deck_size} cards.'
         self.is_game_end = False
         if len(self.deck_list) != self.deck_size:
@@ -37,10 +37,9 @@ class GameSession:
         players_pos = dict((x, -1) for x in players)
 
         for index, player, cards in self.current_player_info(players, self.deck_list):
-            print(index, player, cards)
             for card in cards:
                 found = self.sequence.find(card, players_pos[player] + 1)
-                if found < 0 or found == self.squares:
+                if found < 0 or found+1 == self.squares:  # we need to add 1 to our found because we work with 0 index
                     self.result = f'Player {player} won after {index+1} cards.'
                     self.is_game_end = True
                     break

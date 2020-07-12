@@ -12,8 +12,8 @@ class ColorBoardView(View):
         form = GameForm(request.POST)
         game_result = None
         if form.is_valid():
-            game = GameSession(form.cleaned_data)
-            game.calculate_result()
-            game_result = game.result
+            session = GameSession(form.cleaned_data)
+            session.calculate_result()
+            game_result = session.result
 
         return render(request, 'game_page.html', {'form': form, 'result': game_result})
